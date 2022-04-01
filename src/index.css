@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 ion-icon {
     color: #253b57;
   }

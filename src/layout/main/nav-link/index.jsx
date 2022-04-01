@@ -34,7 +34,7 @@ const Navlik = () => {
             <div onClick={()=>setOpen(!open)} class='text-3xl  cursor-pointer md:hidden text-ascBlue'>
             <ion-icon name='menu-sharp' ></ion-icon>  
             </div>
-            <ul class={`md:pb-0 pb-12 absolute -top-0 inset-y-0 right-0 md:items-center md:static backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200 md:border-0 md:z-auto z-[1] w-3/4 h-full md:w-auto md:pl-0 pl-9 transition-all delay-150 ease-in-out duration-100 ${open ? 'visible':'invisible'}`}>
+            <ul onClick={()=>setOpen(!open)} class={`md:pb-0 pb-12 absolute -top-0 inset-y-0 right-0 md:items-center md:static backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200 md:border-0 md:z-auto z-[1] w-full h-full md:w-auto md:pl-0 pl-9 transition-all delay-150 ease-in-out duration-100 ${open ? 'visible':'invisible'}`}>
                 <li onClick={()=>setOpen(!open)} class='text-3xl absolute right-8 top-6 cursor-pointer md:hidden text-ascBlue'>
                 <ion-icon name={open ? 'close':'menu-sharp'} ></ion-icon>
                 </li>

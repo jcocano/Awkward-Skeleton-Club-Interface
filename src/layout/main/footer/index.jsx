@@ -7,7 +7,7 @@ import {ReactComponent as Instagram} from '../../assets/social/instagram.svg'
 function Footer() {
 
     return (
-        <footer class="flex.col h-12 bg-ascYellow">
+        <footer class="flex.col h-12 bg-ascYellow fixed inset-x-0 bottom-0">
             <div class="flex justify-around items-center pt-2">
                 <a href="https://discord.com/invite/KGaFHC29mC"> <Discord class='w-4 h-4'/></a>
                 <a href="https://twitter.com/SkeletonAwkward"> <Twitter fill='#253b57' class='w-4 h-4'/></a>
