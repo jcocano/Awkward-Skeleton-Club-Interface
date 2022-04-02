@@ -4,6 +4,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'sm': '640px',
+        'smm': '768px',
+        'md': '870px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       fontFamily:{
         'fut': ['Futura', 'sans-serif']
       }, 

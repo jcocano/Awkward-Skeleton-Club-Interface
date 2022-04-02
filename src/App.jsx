@@ -2,7 +2,7 @@ import MainLayout from './layout/main'
 
 function App() {
 
-    return (
+        return (
             <MainLayout /> 
     );
   }

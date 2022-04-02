@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import useTruncatedAddress from "../../../hooks/useTruncatedAddress"
 
 
-const WalletData = () => {
+const ListWallet = () => {
     const [balance, setBalance] = useState(0);
     const { active, activate, deactivate, account, error, library } =
       useWeb3React();
@@ -38,27 +38,27 @@ const WalletData = () => {
     const truncatedAddress = useTruncatedAddress(account);
 
     return (
-        <div class='hidden flex md:block'>
+        <div class='flex'>
             { active ? (
-                <div class='flex md:bg-ascBlueLight md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:items-center md:rounded md:ml-8 duration-500'>
+                <div class='flex font-fut font-semibold text-ascBlue'>
                     <div class='mr-2'>
                         <p>{truncatedAddress}</p>
                     </div>
                     <div>
-                        <p>~{balance} Ξ</p>
+                        <p>- {balance} Ξ</p>
                     </div>
                     <button onClick={disconnect}><ion-icon class='mt-1 ml-2' color='white' name="close" ></ion-icon></button>
                 </div>
             ) : (
                 <button
                 disabled={isUnsupportedChain}
-                class="hidden md:block md:bg-ascBlue md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:rounded md:ml-8 hover:bg-ascBlueLight duration-500"
+                class="font-fut font-semibold text-ascBlue"
                 onClick={connect}>
-                 {isUnsupportedChain ? "CHANGE NETWORK" : "CONECT WALLET"}
+                 {isUnsupportedChain ? "Change Network" : "Connect Wallet"}
         </button>
             )}
         </div>
     )
 }
 
-export default WalletData;
+export default ListWallet;

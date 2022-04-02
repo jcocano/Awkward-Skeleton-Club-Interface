@@ -14,7 +14,7 @@ const MainLayout = () => {
         <div>
             <Banner />
             <Navlik />
-            <div class="flex flex-col md:flex-row-reverse justify-center justify-items-center mt-3 xl:mt-11 xl:pt-11">
+            <div class="flex flex-col smm:flex-row-reverse align-center justify-center justify-items-center mt-3 smm:mt-11 xl:pt-10">
                 <div class='flex flex-col justify-center justify-items-center'>
                 <h1 class="text-center mb-2 font-fut text-ascBlue text-5xl md:text-6xl">MINT IS LIVE!</h1>
                 <h3 class='text-center mb-3 font-fut text-ascBlue text-2xl font-extralight md:text-4xl'>How many skeletons do you wish to mint?</h3>
