@@ -38,21 +38,21 @@ const WalletData = () => {
     const truncatedAddress = useTruncatedAddress(account);
 
     return (
-        <div class='hidden flex md:block'>
+        <div className='hidden flex md:block'>
             { active ? (
-                <div class='flex md:bg-ascBlueLight md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:items-center md:rounded md:ml-8 duration-500'>
-                    <div class='mr-2'>
+                <div className='flex md:bg-ascBlueLight md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:items-center md:rounded md:ml-8 duration-500'>
+                    <div className='mr-2'>
                         <p>{truncatedAddress}</p>
                     </div>
                     <div>
                         <p>~{balance} Ξ</p>
                     </div>
-                    <button onClick={disconnect}><ion-icon class='mt-1 ml-2' color='white' name="close" ></ion-icon></button>
+                    <button onClick={disconnect}><ion-icon className='mt-1 ml-2' color='white' name="close" ></ion-icon></button>
                 </div>
             ) : (
                 <button
                 disabled={isUnsupportedChain}
-                class="hidden md:block md:bg-ascBlue md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:rounded md:ml-8 hover:bg-ascBlueLight duration-500"
+                className="hidden md:block md:bg-ascBlue md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:rounded md:ml-8 hover:bg-ascBlueLight duration-500"
                 onClick={connect}>
                  {isUnsupportedChain ? "CHANGE NETWORK" : "CONECT WALLET"}
         </button>

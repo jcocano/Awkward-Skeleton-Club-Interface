@@ -38,21 +38,21 @@ const ListWallet = () => {
     const truncatedAddress = useTruncatedAddress(account);
 
     return (
-        <div class='flex'>
+        <div className='flex'>
             { active ? (
-                <div class='flex font-fut font-semibold text-ascBlue'>
-                    <div class='mr-2'>
+                <div className='flex font-fut font-semibold text-ascBlue'>
+                    <div className='mr-2'>
                         <p>{truncatedAddress}</p>
                     </div>
                     <div>
                         <p>- {balance} Ξ</p>
                     </div>
-                    <button onClick={disconnect}><ion-icon class='mt-1 ml-2' color='white' name="close" ></ion-icon></button>
+                    <button onClick={disconnect}><ion-icon className='mt-1 ml-2' color='white' name="close" ></ion-icon></button>
                 </div>
             ) : (
                 <button
                 disabled={isUnsupportedChain}
-                class="font-fut font-semibold text-ascBlue"
+                className="font-fut font-semibold text-ascBlue"
                 onClick={connect}>
                  {isUnsupportedChain ? "Change Network" : "Connect Wallet"}
         </button>
