@@ -5,6 +5,8 @@ import Footer from "./footer";
 import Full from "../assets/Full.png"
 import { useCallback, useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
+
+
 import useAwkwardSkeletonClub from "../../hooks/useAwkwardSkeletonClub";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,17 +18,95 @@ const MainLayout = () => {
 
     const [count, setCount] = useState(0);
 
-    const [isMinting, setIsMinting] = useState(false)
+    const [salesPhase, setSalesPhase] = useState();
+    const [isMinting, setIsMinting] = useState(false);
 
     const { active, account } = useWeb3React();
 
+/*     const merkleTree = MerkleTree;
+ */
     const asc = useAwkwardSkeletonClub();
 
-    //const wlPrice = 2e+16;
+    const getSalesPhase = useCallback(async() =>{
+        if(asc){
+            const resultSalesPhase = await asc.methods.salesPhase().call()
+            setSalesPhase(resultSalesPhase);
+            console.log(resultSalesPhase);
+        }
+    }, [asc])
+
+    useEffect(()=> {
+        getSalesPhase()
+    }, [getSalesPhase])
+
+
+  /*   const proof = useCallback (async () =>{
+        let tab = [];
+        tokens.map((token) =>{
+        tab.push(token.addess);
+        })
+
+        const leaves = tab.map((address) => keccak256(address));
+        const tree = new MerkleTree(leaves, keccak256, { sort: true });
+        const root = tree.getHexRoot();
+        const leaf = keccak256("0xe7b1d253b811Ca3a845e31F1124aEa502Bf73347");
+        const proof = tree.getHexProof(leaf);
+        console.log("root : " + root);
+        console.log("proof : " + proof);
+    }) */
+   
+    const proof = [""];
+    const wlPrice = 2e+16; 
     const publicPrice = 3e+16;
+    
+    const wlMint = () => {
+        setIsMinting(true);
+        console.log("WL Mint")
+
+        asc.methods.whiteListMint(count, proof).send({
+            from: account,
+            value: wlPrice * count,
+            })
+            .on('transactionHash', (txHash) => {
+                toast.info(`🚀 TRANSACTION SENT ${txHash?.substr(0, 6)}...${txHash?.substr(-4)}`, {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+            })
+            .on('receipt', () =>{
+                setIsMinting(false);
+                toast.success('💀 CONFIRMED TRANSACTION', {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+            })
+            .on('error', (error) => {
+                setIsMinting(false);
+                toast.error(`✋ FAILED TRANSACTION ${error.message} `,{
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+            })
+    }
 
     const pubMint = () =>{
         setIsMinting(true);
+        console.log("normal mint")
 
         asc.methods.publicMint(count).send({
             from: account,
@@ -86,7 +166,7 @@ const MainLayout = () => {
                     <span className="m-auto text-2xl font-thin">+</span>
                     </button>
                  </div>
-                 <button className={`self-center flex justify-center items-center bg-ascBlue text-white font-fut-300 mt-4 h-10 rounded hover:bg-ascBlueLight duration-500 w-48 sm:w-56 md:w-64 ${isMinting ? 'bg-ascBlueLight':'bg-ascBlue'} `} type="submit" onClick={pubMint} disabled={!active}>
+                 <button className={`self-center flex justify-center items-center bg-ascBlue text-white font-fut-300 mt-4 h-10 rounded hover:bg-ascBlueLight duration-500 w-48 sm:w-56 md:w-64 ${count===0 ? 'bg-ascBlueLight':'bg-ascBlue'} ${salesPhase==="2" ? 'bg-ascBlueLight':'bg-ascBlue'} ${!active ? 'bg-ascBlueLight':'bg-ascBlue'} `} type="submit" onClick={salesPhase==="0" ? wlMint : pubMint} disabled={!active || count===0 || salesPhase==="2"} >
                     <svg class={`w-4 h-4 mr-3 text-white animate-spin justify-self-center ${isMinting ? 'visible':'invisible'}`}  fill="none"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
