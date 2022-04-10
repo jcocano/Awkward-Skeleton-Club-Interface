@@ -52,7 +52,7 @@ const WalletData = () => {
             ) : (
                 <button
                 disabled={isUnsupportedChain}
-                className="hidden md:block md:bg-ascBlue md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:rounded md:ml-8 hover:bg-ascBlueLight duration-500"
+                className="hidden md:block md:bg-ascBlue md:text-white font-fut-300 md:py-2 md:px-2 md:h-12 md:rounded md:ml-8 hover:bg-ascBlueLight duration-500 drop-shadow-xl"
                 onClick={connect}>
                  {isUnsupportedChain ? "CHANGE NETWORK" : "CONECT WALLET"}
         </button>

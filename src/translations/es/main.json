@@ -1,0 +1,12 @@
+{
+    "main":{
+        "title": "MINT IS LIVE!",
+        "subtitle": "¿Cuantos skeletons quieres comprar?",
+        "paused": "ASC ESTA PAUSADO",
+        "no-active": "CONECTAR CARTERA",
+        "count-0": "NO PUEDES COMPRAR 0",
+        "no-whitelisted": "NO ESTAS EN WL",
+        "mint-btn": "COMPRAR",
+        "sold-out": "AGOTADO"
+    }
+}

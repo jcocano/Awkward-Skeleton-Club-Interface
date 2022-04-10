@@ -1,0 +1,12 @@
+{
+    "main":{
+        "title": "MINT IS LIVE!",
+        "subtitle": "How many skeletons do you wish to mint?",
+        "paused": "ASC IS PAUSED",
+        "no-active": "CONNECT WALLET",
+        "count-0": "MINT CAN'T BE 0",
+        "no-whitelisted": "YOUR NOT IN WL",
+        "mint-btn": "MINT",
+        "sold-out": "SOLD OUT"
+    }
+}
