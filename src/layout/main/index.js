@@ -13,8 +13,12 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import tokens from '../../config/web3/whitelist/tokens.json'
 
+import { useTranslation } from "react-i18next"
+
+
 toast.configure()
 const MainLayout = () => {
+    const [t] = useTranslation("main")
 
     const [count, setCount] = useState(0);
 
@@ -176,45 +180,45 @@ const MainLayout = () => {
             if(isPaused === true){
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100"}`}
                 >
-                    ASC IS PAUSED
+                    {t("main.paused")}
                 </span>
             }
             if(!active){
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100"}`}
                 >
-                    CONNECT WALLET
+                    {t("main.no-active")}
                 </span>
             }
             if(count=== 0){
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100"}`}
                 >
-                    MINT CAN'T BE 0
+                    {t("main.count-0")}
                 </span>
             }
             if(salesPhase === "0"){
                 if(proof === false){
                     return <span className={`justify-self-center -ml-6 ease-in-out duration-10 "}`}
                     >
-                        YOUR NOT WL
+                        {t("main.no-whitelisted")}
                     </span>
                 }
             }
             if(salesPhase === "1"){
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100 ${isMinting ? "-ml-0" : "-ml-6 "}`}
                 >
-                    MINT
+                    {t("main.mint-btn")}
                 </span>
             }
             if(salesPhase === "2"){
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100"}`}
                 >
-                    SOLD OUT
+                    {t("mint.sold-out")}
                 </span>
             }
             else{
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100 ${isMinting ? "-ml-0" : "-ml-6 "}`}
                 >
-                    MINT
+                    {t("main.mint-btn")}
                 </span>
             }
         }
@@ -225,8 +229,8 @@ const MainLayout = () => {
             <Navlik />
             <div className="flex flex-col smm:flex-row-reverse align-center justify-center justify-items-center mt-3 xl:pt-5">
                 <div className='flex flex-col justify-center justify-items-center'>
-                <h1 className="text-center mb-2 font-fut text-ascBlue text-5xl md:text-6xl">MINT IS LIVE!</h1>
-                <h3 className='text-center mb-3 font-fut text-ascBlue text-2xl font-extralight md:text-4xl'>How many skeletons do you wish to mint?</h3>
+                <h1 className="text-center mb-2 font-fut text-ascBlue text-5xl md:text-6xl">{t("main.title")}</h1>
+                <h3 className='text-center mb-3 font-fut text-ascBlue text-2xl font-extralight md:text-4xl'>{t("main.subtitle")}</h3>
                 <div className='flex flex-row self-center h-10 w-2/6 md:w-44 rounded-lg relative bg-transparent mt-1' >
                     <button onClick={()=> setCount(count -1)} disabled={count === 0} className='bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none'>
                     <span className="m-auto text-2xl font-thin">−</span>

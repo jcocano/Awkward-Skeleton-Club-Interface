@@ -7,16 +7,11 @@ import ASC from '../../assets/asc.png'
 import WalletData from '../wallet-data';
 import ListWallet from '../list-wallet';
 
-
+import { useTranslation } from "react-i18next"
 
 const Navlik = () => {
 
-    let Links = [
-        {name: 'Home', link:'https://www.awkwardskeleton.com/'},
-        {name: 'Discord', link:'https://discord.gg/GmZej7Qy'},
-        {name: 'Español', link:'/'},
-        {name: 'English', link:'/'},
-    ]
+    const [t, i18next] = useTranslation("navilink")
 
     let [open,setOpen]=useState(false);
 
@@ -27,9 +22,17 @@ const Navlik = () => {
                 <img src={ASC} alt="" className='hidden p-1 h-12 inline-flex md:block' />
             </div>
             <div className='hidden md:my-0 my-7 md:block'>
-                <a href="EN">EN</a>
-                <span> / </span> 
-                <a href="ES">ES</a>    
+                <button 
+                className='font-fut font-medium text-xl text-ascBlue hover:text-ascBlueLight'
+                onClick={() => i18next.changeLanguage("en")} >
+                    EN
+                </button>
+                <span> / </span>
+                <button
+                className='font-fut font-medium text-xl text-ascBlue hover:text-ascBlueLight'
+                onClick={() => i18next.changeLanguage("es")}>
+                    ES
+                </button>
             </div >
             <div onClick={()=>setOpen(!open)} className='text-3xl  cursor-pointer md:hidden text-ascBlue'>
             <ion-icon name='menu-sharp' ></ion-icon>  
@@ -38,14 +41,25 @@ const Navlik = () => {
                 <li onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden text-ascBlue'>
                 <ion-icon name={open ? 'close':'menu-sharp'} ></ion-icon>
                 </li>
-        
-                {   
-                Links.map((link)=>(
-                    <li key={link.name} className='md:hidden text-x1 mt-12 pr-7 pt-9  font-fut font-semibold text-ascBlue text-right'>
-                        <a href={link.link} className=''>{link.name}</a>
-                        
-                    </li>
-                ))}
+                <li className='md:hidden text-x1 mt-12 pr-7 pt-9  font-fut font-semibold text-ascBlue text-right hover:text-ascBlueLight'>
+                    <a href='https://www.awkwardskeleton.com/'>{t("navilink.home")}</a>
+                </li>
+                <li className='md:hidden text-x1 mt-12 pr-7 pt-9  font-fut font-semibold text-ascBlue text-right hover:text-ascBlueLight'>
+                    <a href='https://discord.gg/GmZej7Qy'>{t("navilink.discord")}</a>
+                </li>
+                <li className='md:hidden text-x1 mt-12 pr-7 pt-9 text-right'>
+                    <button className='md:hidden font-fut font-semibold text-ascBlue hover:text-ascBlueLight'
+                    onClick={() => i18next.changeLanguage("es")}>{t("navilink.esp")}
+                    </button>
+                </li>
+                <li className='md:hidden text-x1 mt-12 pr-7 pt-9 text-right'>
+                    <button 
+                    className='md:hidden font-fut font-semibold text-ascBlue hover:text-ascBlueLight'
+                    onClick={() => i18next.changeLanguage("en")}>
+                        {t("navilink.eng")}
+                    </button>
+                </li>
+                
                 <li className='grid place-content-end mt-12 pr-7 pt-9'>
                    <ListWallet />
                 </li> 

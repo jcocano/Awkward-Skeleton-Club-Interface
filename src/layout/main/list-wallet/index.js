@@ -4,8 +4,14 @@ import { connector } from "../../../config/web3";
 import { useCallback, useEffect, useState } from "react";
 import useTruncatedAddress from "../../../hooks/useTruncatedAddress"
 
+import { useTranslation } from "react-i18next"
+
 
 const ListWallet = () => {
+
+  const [t] = useTranslation("wallet")
+
+
     const [balance, setBalance] = useState(0);
     const { active, activate, deactivate, account, error, library } =
       useWeb3React();
@@ -54,7 +60,7 @@ const ListWallet = () => {
                 disabled={isUnsupportedChain}
                 className="font-fut font-semibold text-ascBlue"
                 onClick={connect}>
-                 {isUnsupportedChain ? "Change Network" : "Connect Wallet"}
+                 {isUnsupportedChain ? t("wallet-data.network") : t("wallet-data.connect")}
         </button>
             )}
         </div>
