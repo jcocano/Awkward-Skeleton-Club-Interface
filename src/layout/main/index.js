@@ -212,7 +212,7 @@ const MainLayout = () => {
             if(salesPhase === "2"){
                 return <span className={`justify-self-center -ml-6 ease-in-out duration-100"}`}
                 >
-                    {t("mint.sold-out")}
+                    {t("main.sold-out")}
                 </span>
             }
             else{
