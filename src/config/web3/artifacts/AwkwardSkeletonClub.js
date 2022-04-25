@@ -1,6 +1,6 @@
 const AwkwardSkeletonClubArtifact = {
   address: {
-    //1: "",
+    1: "0x5c264E7c519Ec468DcD6Af63A84308497733D67F",
     4: "0x9d1292498C66d96AB30db9a2097935590DbB6310",
   },
   abi: [
