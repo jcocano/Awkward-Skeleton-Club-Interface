@@ -6,6 +6,7 @@ import ASC from '../../assets/asc.png'
 
 import WalletData from '../wallet-data';
 import ListWallet from '../list-wallet';
+import WalletMobil from '../wallet-mobil'
 
 import { useTranslation } from "react-i18next"
 
@@ -34,6 +35,9 @@ const Navlik = () => {
                     ES
                 </button>
             </div >
+            <div className="absolute left-1/2 ">
+                <WalletMobil/>
+            </div>
             <div onClick={()=>setOpen(!open)} className='text-3xl  cursor-pointer md:hidden text-ascBlue'>
             <ion-icon name='menu-sharp' ></ion-icon>  
             </div>

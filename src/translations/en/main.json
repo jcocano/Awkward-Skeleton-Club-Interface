@@ -3,7 +3,7 @@
         "title": "MINT IS LIVE!",
         "subtitle": "How many skeletons do you wish to mint?",
         "paused": "ASC IS PAUSED",
-        "no-active": "CONNECT WALLET",
+        "no-active": "PLZ CONNECT WALLET",
         "count-0": "MINT CAN'T BE 0",
         "no-whitelisted": "YOUR NOT IN WL",
         "mint-btn": "MINT",

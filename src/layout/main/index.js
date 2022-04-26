@@ -16,6 +16,7 @@ import tokens from '../../config/web3/whitelist/tokens.json'
 import { useTranslation } from "react-i18next"
 
 
+
 toast.configure()
 const MainLayout = () => {
     const [t] = useTranslation("main")
